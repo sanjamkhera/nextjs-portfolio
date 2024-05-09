@@ -129,10 +129,10 @@ const ContactPage = () => {
           {/* SOCIAL LINKS */}
           <div className='flex flex-row items-center justify-center gap-4 mb-56'>
             <Link href="https://github.com/sanjamkhera">
-              <Image src="/AnimatedPortfolio/github.png" alt="" width={48} height={48} />
+              <Image src="/nextjs-portfolio/github.png" alt="" width={48} height={48} />
             </Link>
             <Link href="https://linkedin.com/in/sanjkhera">
-              <Image src="/AnimatedPortfolio/linkedin.png" alt="" width={48} height={48} />
+              <Image src="/nextjs-portfolio/linkedin.png" alt="" width={48} height={48} />
             </Link>
           </div>
         </div>
