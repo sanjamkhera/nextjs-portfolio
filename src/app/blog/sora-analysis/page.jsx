@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from 'next/image';
 import Link from 'next/link';
 
 const SoraAnalysisBlog = () => {
@@ -21,7 +20,7 @@ const SoraAnalysisBlog = () => {
             ← Back to AI Insights
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            OpenAI's Sora: The Future of Video Generation
+            OpenAI&apos;s Sora: The Future of Video Generation
           </h1>
           <div className="flex items-center gap-4 text-gray-700">
             <span>March 1, 2024</span>
@@ -33,7 +32,7 @@ const SoraAnalysisBlog = () => {
         {/* Introduction */}
         <div className="prose prose-lg max-w-none mb-12 text-black">
           <p className="lead">
-            OpenAI's recent unveiling of Sora has sent shockwaves through the AI and creative communities. This text-to-video model represents a quantum leap in AI's ability to understand and generate visual content. In this analysis, I'll break down what makes Sora special and explore its implications for content creation and digital media.
+            OpenAI&apos;s recent unveiling of Sora has sent shockwaves through the AI and creative communities. This text-to-video model represents a quantum leap in AI&apos;s ability to understand and generate visual content. In this analysis, I&apos;ll break down what makes Sora special and explore its implications for content creation and digital media.
           </p>
         </div>
 
@@ -60,7 +59,7 @@ const SoraAnalysisBlog = () => {
 
           <h2>Technical Breakthroughs</h2>
           <p>
-            While OpenAI hasn't released full technical details, based on the demonstrations and my analysis, Sora likely incorporates:
+            While OpenAI hasn&apos;t released full technical details, based on the demonstrations and my analysis, Sora likely incorporates:
           </p>
           <ul>
             <li>
@@ -140,7 +139,7 @@ const SoraAnalysisBlog = () => {
         {/* Conclusion */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-lg text-black">
-            Sora represents a significant milestone in AI's ability to understand and generate visual content. While there are challenges and ethical considerations to address, the potential applications are vast and exciting. As someone working at the intersection of AI and creative technology, I'm particularly interested in how this technology will evolve and how creators will adapt to these new tools.
+            Sora represents a significant milestone in AI&apos;s ability to understand and generate visual content. While there are challenges and ethical considerations to address, the potential applications are vast and exciting. As someone working at the intersection of AI and creative technology, I&apos;m particularly interested in how this technology will evolve and how creators will adapt to these new tools.
           </p>
         </div>
       </div>

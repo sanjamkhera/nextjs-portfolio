@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from 'next/image';
 import Link from 'next/link';
 
 const AIAgentsBlog = () => {
@@ -33,7 +32,7 @@ const AIAgentsBlog = () => {
         {/* Introduction */}
         <div className="prose prose-lg max-w-none mb-12 text-black">
           <p className="lead">
-            The AI landscape is evolving rapidly, and one of the most exciting developments is the emergence of AI agents. These aren't just chatbots that respond to prompts—they're autonomous systems capable of planning, reasoning, and executing complex tasks. In this article, I'll explore how AI agents are changing the game and what this means for the future of artificial intelligence.
+            The AI landscape is evolving rapidly, and one of the most exciting developments is the emergence of AI agents. These aren&apos;t just chatbots that respond to prompts—they&apos;re autonomous systems capable of planning, reasoning, and executing complex tasks. In this article, I&apos;ll explore how AI agents are changing the game and what this means for the future of artificial intelligence.
           </p>
         </div>
 
@@ -52,7 +51,7 @@ const AIAgentsBlog = () => {
 
           <h2>Real-World Applications</h2>
           <p>
-            I've been working with several AI agent frameworks recently, and the potential applications are fascinating:
+            I&apos;ve been working with several AI agent frameworks recently, and the potential applications are fascinating:
           </p>
           <ul>
             <li>
@@ -103,7 +102,7 @@ const AIAgentsBlog = () => {
 
           <h2>Looking Ahead</h2>
           <p>
-            The development of AI agents is still in its early stages, but the progress is remarkable. In my recent projects, I've seen agents successfully:
+            The development of AI agents is still in its early stages, but the progress is remarkable. In my recent projects, I&apos;ve seen agents successfully:
           </p>
           <ul>
             <li>Debug complex codebases</li>
@@ -116,7 +115,7 @@ const AIAgentsBlog = () => {
 
           <h2>Getting Started</h2>
           <p>
-            If you're interested in exploring AI agents, here are some resources I've found valuable:
+            If you&apos;re interested in exploring AI agents, here are some resources I&apos;ve found valuable:
           </p>
           <ul>
             <li>LangChain - A framework for building applications with LLMs</li>
@@ -128,7 +127,7 @@ const AIAgentsBlog = () => {
         {/* Conclusion */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-lg text-black">
-            AI agents represent a significant step forward in artificial intelligence. While there are challenges to overcome, the potential applications are vast and exciting. I'll continue to explore and write about developments in this space, so stay tuned for more insights.
+            AI agents represent a significant step forward in artificial intelligence. While there are challenges to overcome, the potential applications are vast and exciting. I&apos;ll continue to explore and write about developments in this space, so stay tuned for more insights.
           </p>
         </div>
       </div>

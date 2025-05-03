@@ -1,17 +1,12 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
 import CaseStudy from "@/components/CaseStudy";
 import { caseStudies } from "@/data/caseStudies";
 
 const Home = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   const slides = [
     {
       title: "Prototype Fast",
@@ -72,48 +67,6 @@ const Home = () => {
       ]
     }
   ];
-
-  // Timer for main slides
-  useEffect(() => {
-    let slideInterval;
-    if (isAutoPlaying) {
-      slideInterval = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-        );
-        setCurrentImageIndex(0);
-      }, 5000);
-    }
-    return () => clearInterval(slideInterval);
-  }, [isAutoPlaying, slides.length]);
-
-  // Timer for nested images
-  useEffect(() => {
-    let imageInterval;
-    if (isAutoPlaying) {
-      imageInterval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
-      }, 3000);
-    }
-    return () => clearInterval(imageInterval);
-  }, [isAutoPlaying]);
-
-  const handleMouseEnter = () => setIsAutoPlaying(false);
-  const handleMouseLeave = () => setIsAutoPlaying(true);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-    );
-    setCurrentImageIndex(0);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    );
-    setCurrentImageIndex(0);
-  };
 
   return (
     <motion.div

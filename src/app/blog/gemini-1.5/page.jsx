@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from 'next/image';
 import Link from 'next/link';
 
 const GeminiBlog = () => {
@@ -21,7 +20,7 @@ const GeminiBlog = () => {
             ← Back to AI Insights
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Gemini 1.5: Google's Leap in Context Understanding
+            Gemini 1.5: Google&apos;s Leap in Context Understanding
           </h1>
           <div className="flex items-center gap-4 text-gray-700">
             <span>March 15, 2024</span>
@@ -33,7 +32,7 @@ const GeminiBlog = () => {
         {/* Introduction */}
         <div className="prose prose-lg max-w-none mb-12 text-black">
           <p className="lead text-black">
-            Google's Gemini 1.5 represents a significant advancement in large language models, particularly in its ability to process and understand long-form context. As someone who's been following the evolution of language models closely, I'm excited to break down what makes Gemini 1.5 special and how it compares to other models in the field.
+            Google&apos;s Gemini 1.5 represents a significant advancement in large language models, particularly in its ability to process and understand long-form context. As someone who&apos;s been following the evolution of language models closely, I&apos;m excited to break down what makes Gemini 1.5 special and how it compares to other models in the field.
           </p>
         </div>
 
@@ -60,7 +59,7 @@ const GeminiBlog = () => {
 
           <h2 className="text-black">Technical Deep Dive</h2>
           <p className="text-black">
-            Let's explore the technical aspects that make Gemini 1.5 stand out:
+            Let&apos;s explore the technical aspects that make Gemini 1.5 stand out:
           </p>
           <ul className="text-black">
             <li className="text-black">
@@ -76,12 +75,12 @@ const GeminiBlog = () => {
 
           <h2 className="text-black">AI Agent Market Comparison</h2>
           <p className="text-black">
-            The AI agent landscape has evolved rapidly, with several major players offering distinct capabilities. Here's how they compare:
+            The AI agent landscape has evolved rapidly, with several major players offering distinct capabilities. Here&apos;s how they compare:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">OpenAI's GPT-4</h3>
+              <h3 className="text-xl font-bold mb-4">OpenAI&apos;s GPT-4</h3>
               <ul className="space-y-2">
                 <li><strong>Strengths:</strong> Exceptional reasoning, creative writing, and code generation</li>
                 <li><strong>Context:</strong> 32k tokens (GPT-4 Turbo)</li>
@@ -91,7 +90,7 @@ const GeminiBlog = () => {
             </div>
 
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">Anthropic's Claude</h3>
+              <h3 className="text-xl font-bold mb-4">Anthropic&apos;s Claude</h3>
               <ul className="space-y-2">
                 <li><strong>Strengths:</strong> Strong ethical alignment and safety features</li>
                 <li><strong>Context:</strong> 200k tokens (Claude 3)</li>
@@ -101,7 +100,7 @@ const GeminiBlog = () => {
             </div>
 
             <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">Meta's Llama</h3>
+              <h3 className="text-xl font-bold mb-4">Meta&apos;s Llama</h3>
               <ul className="space-y-2">
                 <li><strong>Strengths:</strong> Open-source availability and customization</li>
                 <li><strong>Context:</strong> Varies by version (up to 32k tokens)</li>
@@ -225,7 +224,7 @@ const GeminiBlog = () => {
         {/* Conclusion */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-lg text-black">
-            Gemini 1.5 represents a significant step forward in language model capabilities, particularly in handling long-form context. As someone working with AI systems daily, I'm particularly excited about its potential applications in research, development, and creative fields. The model's ability to maintain context across longer sequences opens up new possibilities for AI-assisted work, though it also raises important questions about efficiency and resource usage that the field will need to address.
+            Gemini 1.5 represents a significant step forward in language model capabilities, particularly in handling long-form context. As someone working with AI systems daily, I&apos;m particularly excited about its potential applications in research, development, and creative fields. The model&apos;s ability to maintain context across longer sequences opens up new possibilities for AI-assisted work, though it also raises important questions about efficiency and resource usage that the field will need to address.
           </p>
         </div>
       </div>

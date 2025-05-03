@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ContactPage = () => {
   return (
@@ -22,7 +23,7 @@ const ContactPage = () => {
             Ready to Start Your Project?
           </h1>
           <p className="text-lg md:text-xl text-gray-700 text-center mb-8">
-            Whether you have a big idea or need help with an existing project, our team is here to help you succeed. Reach out and let's build something great together!
+            Whether you have a big idea or need help with an existing project, our team is here to help you succeed. Reach out and let&apos;s build something great together!
           </p>
           <a
             href="mailto:notify@seawallsoftware.ca"
@@ -39,9 +40,11 @@ const ContactPage = () => {
           <div className="w-full h-full bg-gradient-to-tr from-primary to-secondary opacity-90" />
         </div>
         <section className="skew-y-6 relative flex flex-col items-center justify-center max-w-3xl mx-auto">
-          <img
+          <Image
             src="/Customer.png"
             alt="Customer Support"
+            width={256}
+            height={256}
             className="w-64 h-auto mb-8 rounded-lg shadow-lg"
           />
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">Outstanding Customer Support</h2>
