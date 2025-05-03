@@ -1,298 +1,318 @@
 "use client"
 
-import Brain from "@/components/brain";
-import { motion, useInView, useScroll } from "framer-motion"
-import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Image from 'next/image';
+import CaseStudy from "@/components/CaseStudy";
+import { caseStudies } from "@/data/caseStudies";
 
-const Homepage = () => {
+const Home = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const containerRef = useRef();
+  const slides = [
+    {
+      title: "Prototype Fast",
+      description: "Streamlined prototyping tool for busy tech leaders. Transforming design workflows with rapid iterations, team collaboration, and seamless handoff between design and development teams.",
+      image: "/PrototypeFast1.png",
+      image2: "/PrototypeFast2.png"
+    },
+    {
+      title: "Verses",
+      description: "Mobile-first content platform showcasing dynamic visual storytelling. Built with React Native, featuring offline support and smooth animations for an engaging user experience.",
+      image: "/Verses1.png",
+      image2: "/Verses2.png"
+    },
+    {
+      title: "Celestial Insights",
+      description: "Cloud-based astrology platform leveraging modern technology to provide personalized career insights. Features include real-time celestial tracking and AI-powered interpretations.",
+      image: "/CelestialInsights1.png",
+      image2: "/CelestialInsights2.png"
+    }
+  ];
 
-  const { scrollYProgress } = useScroll({ container: containerRef });
+  const pricingTiers = [
+    {
+      name: "Starter",
+      price: "$2,999",
+      description: "Perfect for small businesses starting their digital journey",
+      features: [
+        "Custom Website Development",
+        "Basic Mobile Optimization",
+        "3 Months Support",
+        "Analytics Integration"
+      ]
+    },
+    {
+      name: "Professional",
+      price: "$5,999",
+      description: "Ideal for growing companies needing comprehensive solutions",
+      features: [
+        "Full-Stack Web Application",
+        "Mobile App Development",
+        "6 Months Support",
+        "Advanced Analytics",
+        "API Integration",
+        "Cloud Hosting Setup"
+      ]
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      description: "Tailored solutions for large organizations",
+      features: [
+        "Custom Software Development",
+        "Digital Transformation Strategy",
+        "24/7 Priority Support",
+        "Advanced Security Features",
+        "Full System Integration",
+        "Dedicated Project Manager"
+      ]
+    }
+  ];
 
-  const skillRef = useRef();
-  const isSkillRefInView = useInView(skillRef, { margin: "-100px" });
+  // Timer for main slides
+  useEffect(() => {
+    let slideInterval;
+    if (isAutoPlaying) {
+      slideInterval = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+        );
+        setCurrentImageIndex(0);
+      }, 5000);
+    }
+    return () => clearInterval(slideInterval);
+  }, [isAutoPlaying, slides.length]);
 
-  const experienceRef = useRef();
-  const isExperienceRefInView = useInView(experienceRef, { margin: "-100px" });
+  // Timer for nested images
+  useEffect(() => {
+    let imageInterval;
+    if (isAutoPlaying) {
+      imageInterval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
+      }, 3000);
+    }
+    return () => clearInterval(imageInterval);
+  }, [isAutoPlaying]);
 
-  const blogRef = useRef();
-  const isBlogRefInView = useInView(blogRef, { margin: "-100px" });
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    );
+    setCurrentImageIndex(0);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+    );
+    setCurrentImageIndex(0);
+  };
 
   return (
     <motion.div
-      className="h-full overflow-scroll"
-      initial={{ y: "-200vh" }}
-      animate={{ y: "0%" }}
-      transition={{ duration: 0 }}>
+      className="min-h-screen"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Hero Section */}
+      <section className="flex flex-col justify-center gap-8 md:gap-12 lg:gap-16 pt-8 md:pt-12 mb-12 md:mb-24 px-4">
+        <motion.h1
+          className="section-title text-black"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          We Provide Digital Solutions
+        </motion.h1>
 
+        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 justify-between mx-auto p-4 md:p-8 lg:py-16 max-w-6xl w-full">
+          <motion.p
+            className="text-lg md:text-xl lg:text-2xl text-center md:text-right mb-auto w-full md:w-1/2 text-black"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            We deliver personalized web applications, mobile solutions, and enterprise software that drives business growth and digital transformation.
+          </motion.p>
 
-      {/* CONTAINER */}
-      <div className='h-full overflow-scroll lg:flex' ref={containerRef}>
-        {/* TEXT CONTAINER */}
-        <div className='p-4 sm:p-8 md:p-12 lg:p-24 flex flex-col gap-24 md:gap-32 lg:gap-36 lg:w-2/3'>
-          {/* BIOGRAPHY CONTAINER */}
-          <div className='flex flex-col gap-12 justify-center'>
-            {/* BIOGRAPHY TITLE */}
-            <h1 className="font-bold text-2xl">Portfolio Website</h1>
-            {/* BIOGRAPHY DESC*/}
-            <p className="text-lg text-justify">This portfolio website showcases my skills, work history, and projects. I used various modern technologies, i.e. React.js, Framer Motion, Tailwind CSS and Next.js for this website.</p>
-            <motion.svg
-              initial={{ opacity: 0.2, y: 0 }}
-              animate={{ opacity: 1, y: "10px" }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
-            >
-              <path
-                d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
-              <path
-                d="M15 11L12 14L9 11"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-            </motion.svg>
-          </div>
-          {/* SKILLS CONTAINER */}
-          <div className='flex flex-col gap-12 justify-center' ref={skillRef}>
-            {/* SKILL TITLE */}
-            <motion.h1
-              initial={{ x: "-300px" }}
-              animate={isSkillRefInView ? { x: 0 } : {}}
-              transition={{ delay: 0.2 }}
-              className="font-bold text-2xl"
-            >
-              SKILLS
-            </motion.h1>
-            {/* SKILL LIST */}
-            <motion.div
-              initial={{ x: "-300px" }}
-              animate={isSkillRefInView ? { x: 0 } : {}}
-              className='w-full flex gap-4 flex-wrap'>
+          <motion.div
+            className="relative mx-auto w-full md:w-auto"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Image
+              src="/SeawallSoftware.png"
+              width={300}
+              height={300}
+              className='rounded-2xl mx-auto w-48 md:w-64 lg:w-[300px] h-auto shadow-xl'
+              alt="Seawall Software"
+              priority
+            />
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Solutions Section */}
+      <section className='relative z-0 py-16 md:py-24'>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary transform -skew-y-6 -z-10 min-h-[500px]" />
 
-              <h3 className="w-full font-bold text-xl">Languages</h3>
-              <div className='w-full flex gap-4 flex-wrap'>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Java</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>JavaScript</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>C++</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>C</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Python</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Swift</div>
-              </div>
+        <div className='relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8'>
+          <motion.h1
+            className="section-title text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Solutions for Every Business
+          </motion.h1>
 
-              <h3 className="w-full font-bold text-xl">Libraries</h3>
-              <div className='w-full flex gap-4 flex-wrap'>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>React</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Next.js</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Tailwind</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Framer Motion</div>
-              </div>
-
-
-              <h3 className="w-full font-bold text-xl">Frameworks and Technologies</h3>
-              <div className='w-full flex gap-4 flex-wrap'>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>AWS SDK</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Dockers</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Azure</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Unix / Linux</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>OpenShift</div>
-              </div>
-              <h3 className="font-bold text-xl">Development and Service</h3>
-              <div className='w-full flex gap-4 flex-wrap'>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Git</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>npm</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>VS Code</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Xcode</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>CI/CD GitHub Actions</div>
-              </div>
-
-              <h3 className="w-full font-bold text-xl">Design</h3>
-              <div className='w-full flex gap-4 flex-wrap'>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>AutoCAD</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Inventor</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>SolidWorks</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>On-Shape</div>
-                <div className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white hover:text-black'>Figma</div>
-              </div>
-
-            </motion.div>
-            {/* BIOGRAPHY SCROLL SVG*/}
-            <motion.svg
-              initial={{ opacity: 0.2, y: 0 }}
-              animate={{ opacity: 1, y: "10px" }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width={50}
-              height={50}
-            >
-              <path
-                d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
-              <path
-                d="M15 11L12 14L9 11"
-                stroke="#000000"
-                strokeWidth="1"
-              ></path>
-            </motion.svg>
-          </div>
-          {/* EXPERIENCE CONTAINER */}
-          <div className='flex flex-col gap-8 justify-center' ref={experienceRef}>
-            {/* EXPERIENCE TITLE */}
-            <motion.h1
-              initial={{ x: "-300px" }}
-              animate={isExperienceRefInView ? { x: "0" } : {}}
-              transition={{ delay: 0.2 }}
-              className="font-bold text-2xl">
-              EXPERIENCE
-            </motion.h1>
-            {/* EXPERIENCE LIST */}
-            <motion.div
-              initial={{ x: "-300px" }}
-              animate={isExperienceRefInView ? { x: "0" } : {}}
-              className=''>
-
-              {/* EXPERIENCE LIST ITEM ONE*/}
-              <div className='flex flex-col justify-between pb-12 '>
-                {/* JOB TITLE */}
-                <div className='bg-white w-2/3 p-3 font-semibold rounded-b-lg rounded-s-lg'>Machine Designer at K-HART Industries</div>
-                {/* JOB Date */}
-                <div className='p-3 text-red-400 text-sm font-semibold'>Jan 2022 - May 2022</div>
-                {/* JOB DESCRIPTION */}
-                <div className='p-3 text-sm italic'>
-
-                  <li>Help design a hydraulic lift system.</li>
-                  <li>75000 lbs and 75ft wide farm seeding drill.</li>
-                  <li>Using On-Shape for 3D modelling and version control.</li>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mt-8'>
+            {[
+              {
+                title: "Digital Transformation",
+                description: "Transform traditional operations into streamlined digital workflows.",
+                image: "/Transform.png"
+              },
+              {
+                title: "Custom Software",
+                description: "Tailor-made applications that align perfectly with your workflow.",
+                image: "/SWSoftware.png"
+              },
+              {
+                title: "Mobile Solutions",
+                description: "Powerful functionality with elegant design for every device.",
+                image: "/phone.png"
+              },
+              {
+                title: "Data Intelligence",
+                description: "Harness your data for clear insights and informed decisions.",
+                image: "/DataDrive.png"
+              }
+            ].map((solution, index) => (
+              <motion.div
+                key={index}
+                className="glass-card"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+              >
+                <h3 className="font-bold text-xl text-white mb-4 whitespace-nowrap">{solution.title}</h3>
+                <p className="text-sm leading-relaxed text-gray-200 mb-4">
+                  {solution.description}
+                </p>
+                <div className="w-full h-[200px] relative rounded-lg overflow-hidden">
+                  <Image
+                    src={solution.image}
+                    width={200}
+                    height={200}
+                    className='object-cover'
+                    alt={solution.title}
+                    style={{ width: '100%', height: '100%' }}
+                  />
                 </div>
-              </div>
-
-              {/* EXPERIENCE LIST ITEM TWO*/}
-              <div className='flex flex-col justify-between pb-12'>
-                {/* JOB TITLE */}
-                <div className='bg-white w-2/3 p-3 font-semibold rounded-b-lg rounded-s-lg'>Software Engineering at University of Manitoba</div>
-                {/* JOB Date */}
-                <div className='p-3 text-red-400 text-sm font-semibold'>Sep 2020 - Apr 2024</div>
-                {/* JOB DESCRIPTION */}
-                <div className='p-3 text-sm italic justify-normal'>
-                  <div>
-                    <li>Completed projects that covered a wide range of topics such as:</li>
-                    <li className="pl-6">Software design and architecture via Object Orientation.</li>
-                    <li className="pl-6">Data structures and algorithms.</li>
-                    <li className="pl-6">Database creation and manipulation via Databases.</li>
-                    <li className="pl-6">Human-computer interaction via Web development.</li>
-                    <li className="pl-6">Operating systems.</li>
-                  </div>
-                </div>
-              </div>
-
-              {/* EXPERIENCE LIST ITEM THREE*/}
-              <div className='flex flex-col justify-between pb-12'>
-                {/* JOB TITLE */}
-                <div className='bg-white w-2/3 p-3 font-semibold rounded-b-lg rounded-s-lg'>DevOps Experience at University of Manitoba</div>
-                {/* JOB Date */}
-                <div className='p-3 text-red-400 text-sm font-semibold'>Sep 2020 - Apr 2024</div>
-                {/* JOB DESCRIPTION */}
-                <div className='p-3 text-sm italic justify-normal'>
-                  <div>
-                    <li>Wrote and executed shell scripts to manipulate files.</li>
-                    <li>Used docker to managed containers and dependencies.</li>
-                    <li>Configured virtual machines and cloud servers (AWS/Azure).</li>
-                    <li>Automated CI/CD work-flows for academic and personal projects.</li>
-                  </div>
-                </div>
-              </div>
-
-              {/* EXPERIENCE LIST ITEM FOUR*/}
-              <div className='flex flex-col justify-between pb-12'>
-                {/* JOB TITLE */}
-                <div className='bg-white w-2/3 p-3 font-semibold rounded-b-lg rounded-s-lg'>Equipment Designer at VAW Systems</div>
-                {/* JOB Date */}
-                <div className='p-3 text-red-400 text-sm font-semibold'>Jan 2015 - Oct 2021</div>
-                {/* JOB DESCRIPTION */}
-                <div className='p-3 text-sm italic'>
-                  <li> Designed industrial silencers from various materials </li>
-                  <li> Automated tasks in AutoCAD / Inventor.</li>
-                </div>
-              </div>
-
-
-              {/* EXPERIENCE LIST ITEM FIVE*/}
-              <div className='flex flex-col justify-between'>
-                {/* JOB TITLE */}
-                <div className='bg-white w-2/3 p-3 font-semibold rounded-b-lg rounded-s-lg'>Controls Technician at Mikkelsen Coward</div>
-                {/* JOB Date */}
-                <div className='p-3 text-red-400 text-sm font-semibold'>May 2014 - Aug 2014</div>
-                {/* JOB DESCRIPTION */}
-                <div className='p-3 text-sm italic'>
-                  <li>Created wiring layouts and installation packages for electricians.</li>
-                  <li>Developed sequence of operations for programmers.</li>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-          {/* BLOG CONTAINER */}
-          <div className='flex flex-col gap-6 justify-center' ref={blogRef}>
-            {/* BLOG TITLE */}
-            <motion.h1
-              initial={{ x: "-300px" }}
-              animate={isBlogRefInView ? { x: "0" } : {}}
-              transition={{ delay: 0.2 }}
-              className="font-bold text-2xl">
-              PERSONAL BLOG
-            </motion.h1>
-            <motion.div
-              initial={{ x: "-300px" }}
-              animate={isBlogRefInView ? { x: "0" } : {}}
-              transition={{ delay: 0.2 }}>
-
-              <div className="container text-justify bg-white p-4 mb-12 rounded-lg">
-                <h3 className="text-l font-bold">Computer Science, University of Manitoba</h3>
-                <p className="text-sm mt-2">During the first year, we were introduced to the fundamentals of programming, algorithms, and data structures. I spent countless hours in the lab, debugging code and learning the intricacies of Python and Java.</p>
-                <p className="text-sm mt-2">In second year, we delved deeper into advanced topics like operating systems, computer networks, and database management systems. We  started working on bigger projects, applying the theoretical knowledge gained during curriculum.</p>
-                <p className="text-sm mt-2">By third year, We were well-versed in several programming languages and had a solid understanding of software development principles. I took elective courses in Artificial Intelligence and Machine Learning, which sparked his interest in data science.</p>
-                <p className="text-sm mt-2">In final year, We worked on various project as showcased in this portfolio.</p>
-                <p className="text-sm mt-2">Throughout the four years at the University of Manitoba, I  acquired a strong foundation in Computer Science and developed critical thinking and problem-solving skills that prepared me todays ever changing tech industry.</p>
-              </div>
-              <div className="container text-justify bg-white p-4 mb-12 rounded-lg">
-                <h3 className="text-l font-bold">Mechanical Engineering Experience</h3>
-                <p className="text-sm mt-2">My journey in Mechanical Engineering began at Red River College, where I pursued a Mechanical Engineering Technology program.</p>
-                <p className="text-sm mt-2">My first professional experience was as a Controls Technician at Mikkelsen Coward, where I created wiring layouts and installation packages for electricians and developed sequences of operations for programmers.</p>
-                <p className="text-sm mt-2">I then moved on to VAW Systems as an Equipment Designer. Here, I worked with Project Managers and customers to interpret specifications, used 3D modeling tools like Inventor for design documentation, and created manufacturing packages using AutoCAD. I took the initiative to automate repetitive tasks and worked on standardizing and improving existing product designs.</p>
-                <p className="text-sm mt-2">Most recently, I worked as a Mechanical Designer at K-HART Industries. I was part of the team that developed hydraulic systems for farm equipment and created macros for 3D modeling in On-Shape. I managed version control using On-Shapes in-built release management, used tools like Sim-Solid for stress analysis and Odoo for ERP and management.</p>
-              </div>
-              <div className="container text-justify bg-white p-4 mb-12 rounded-lg">
-                <h3 className="text-l font-bold">Moving to Vancouver</h3>
-                <p className="text-sm mt-2">Moving from Winnipeg, Manitoba, where I lived for over 12 years, to Vancouver was a significant transition in my life.</p>
-                <p className="text-sm mt-2">The move brought with it a mix of struggles and opportunities that are common for many students. Adapting to a new city meant finding my way around, adjusting to a different pace of life, and building a new social circle.</p>
-                <p className="text-sm mt-2">The weather in Vancouver, with its mild winters and beautiful summers, offered a contrast to the colder climate in Winnipeg. It was refreshing to experience the lush greenery and outdoor activities that Vancouver had to offer, including my passions for mountain biking and climbing.</p>
-                <p className="text-sm mt-2">Speaking of climbing, I recently climbed The Squamish Chief ten times. This challenge, fueled by determination and intensity, was not just about physical fitness but also about pushing my own limits and embracing a spiritual connection to the journey.</p>
-                <p className="text-sm mt-2">The Squamish Chief itself stands as a monumental symbol of challenge and natural beauty. Its massive granite structure attracts climbers globally, offering a unique experience that tests both skill and courage. Climbing its peaks was not just about conquering a physical obstacle but also about mastering my own inner hurdles, drawing strength from the symbolism and history that surrounded this remarkable natural wonder.</p>
-                <p className="text-sm mt-2">My move to Vancouver is a pivotal moment in my life, filled with challenges, opportunities, and personal growth. Embracing the outdoors, pursuing my passions, and undertaking challenges like climbing The Squamish Chief have all contributed to shaping my journey and my experiences in this vibrant city.</p>
-              </div>
-            </motion.div>
-            {/* BIOGRAPHY SCROLL SVG*/}
+              </motion.div>
+            ))}
           </div>
         </div>
-        {/* SVG CONTAINER */}
-        <div className='hidden lg:block w-1/2 sticky top-0 z-30 xl:w-1/2'>
-          <Brain scrollYProgress={scrollYProgress} />
+      </section>
+
+      {/* Work Section */}
+      <section id="work" className="pt-32 md:pt-40 py-16 md:py-24 bg-gradient-to-r from-accent/20 to-accent">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+          <motion.h1
+            className="section-title text-black"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Our Work
+          </motion.h1>
+
+          <motion.p
+            className="text-center max-w-3xl mx-auto mb-12 text-black/80 text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            We believe great user interfaces are essential for all digital products. Our designs focus on clarity, aesthetics, and exceptional user experience regardless of the complexity behind them.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8">
+            {caseStudies.map((project) => (
+              <CaseStudy
+                key={project.id}
+                project={{
+                  ...project,
+                  technologies: project.technologies,
+                  images: project.images
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className='relative z-0 mt-0'>
+        <div className="relative w-full min-h-[80vh] px-4 md:px-6 lg:px-8">
+          {/* Skewed background only, behind everything */}
+          <div
+            className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary -z-10"
+            style={{
+
+            }}
+          />
+          {/* Heading in main flow, with top margin to sit on gray */}
+          <div className="flex flex-col justify-center items-center pt-12 md:pt-16 lg:pt-20 pb-8">
+            <h1 className="section-title text-white text-center drop-shadow-lg">
+              Transparent Pricing
+            </h1>
+          </div>
+          <div className='relative flex flex-col justify-center items-center h-full pb-16 md:pb-24 lg:pb-32'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 max-w-7xl w-full items-stretch'>
+              {pricingTiers.map((tier, index) => (
+                <motion.div
+                  key={index}
+                  className="glass-card flex flex-col justify-between h-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
+                  <div className="space-y-4">
+                    <h3 className="font-bold text-2xl text-white">{tier.name}</h3>
+                    <p className="text-3xl font-bold text-white">{tier.price}</p>
+                    <p className="text-base text-gray-300 leading-relaxed">
+                      {tier.description}
+                    </p>
+                    <ul className="space-y-4 flex-grow">
+                      {tier.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="text-base text-gray-300 flex items-start">
+                          <span className="mr-3 text-lg">•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button className="btn-primary w-full mt-8">
+                    Get Started
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </motion.div>
   );
 };
 
-export default Homepage;
+export default Home;
