@@ -9,20 +9,20 @@ import { caseStudies } from "@/data/caseStudies";
 const Home = () => {
   const slides = [
     {
-      title: "Prototype Fast",
-      description: "Streamlined prototyping tool for busy tech leaders. Transforming design workflows with rapid iterations, team collaboration, and seamless handoff between design and development teams.",
+      title: "Prototype Fast - AI-Powered Design Solution",
+      description: "Revolutionary prototyping tool transforming design workflows through artificial intelligence. Enables rapid iterations, seamless team collaboration, and efficient handoff between design and development teams, significantly accelerating the product development cycle.",
       image: "/PrototypeFast1.png",
       image2: "/PrototypeFast2.png"
     },
     {
-      title: "Verses",
-      description: "Mobile-first content platform showcasing dynamic visual storytelling. Built with React Native, featuring offline support and smooth animations for an engaging user experience.",
+      title: "Verses - Interactive Learning Platform",
+      description: "Cutting-edge educational platform delivering dynamic visual storytelling and interactive learning experiences. Built with React Native, featuring offline support, smooth animations, and age-appropriate content for engaging educational experiences.",
       image: "/Verses1.png",
       image2: "/Verses2.png"
     },
     {
-      title: "Celestial Insights",
-      description: "Cloud-based astrology platform leveraging modern technology to provide personalized career insights. Features include real-time celestial tracking and AI-powered interpretations.",
+      title: "Celestial Insights - AI Career Guidance",
+      description: "Innovative cloud-based platform leveraging artificial intelligence to deliver personalized career insights. Features include real-time celestial tracking, AI-powered interpretations, and data-driven career recommendations for optimal professional growth.",
       image: "/CelestialInsights1.png",
       image2: "/CelestialInsights2.png"
     }
@@ -83,7 +83,7 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          We Provide Digital Solutions
+          Seawall Software - Vancouver's Digital Solutions Expert
         </motion.h1>
 
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 justify-between mx-auto p-4 md:p-8 lg:py-16 max-w-6xl w-full">
@@ -93,7 +93,7 @@ const Home = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
           >
-            We deliver personalized web applications, mobile solutions, and enterprise software that drives business growth and digital transformation.
+            Seawall Software delivers personalized web applications, mobile solutions, and enterprise software that drives business growth and digital transformation in Vancouver and beyond.
           </motion.p>
 
           <motion.div
@@ -125,7 +125,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Solutions for Every Business
+            Seawall Software's Comprehensive Digital Solutions
           </motion.h1>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mt-8'>
@@ -187,7 +187,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Our Work
+            Seawall Software's Portfolio of Digital Solutions
           </motion.h1>
 
           <motion.p
@@ -196,7 +196,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            We believe great user interfaces are essential for all digital products. Our designs focus on clarity, aesthetics, and exceptional user experience regardless of the complexity behind them.
+            At Seawall Software, we specialize in creating exceptional user interfaces and digital experiences that drive business growth. Our Vancouver-based team focuses on clarity, aesthetics, and exceptional user experience, backed by cutting-edge technology and innovative solutions.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8">

@@ -15,10 +15,19 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Seawall Software | Digital Solutions",
-  description: "Personal Portfolio of Sanjam Khera - Expert in web development, mobile apps, and digital transformation",
-  keywords: "web development, mobile apps, digital transformation, software solutions",
-  location: "410 W Georgia St, Vancouver, BC V6B 1Z3, Canada",
+  title: "Seawall Software | Vancouver's Premier Digital Solutions Company",
+  description: "Seawall Software is Vancouver's leading digital solutions provider, specializing in web development, mobile apps, and AI integration. Expert team delivering innovative software solutions for businesses.",
+  keywords: "Seawall Software, Vancouver software company, web development Vancouver, mobile app development, digital solutions, software development, AI integration, custom software solutions, Vancouver tech company",
+  location: "Vancouver, BC, Canada",
+  author: "Seawall Software",
+  robots: "index, follow",
+  openGraph: {
+    title: "Seawall Software | Vancouver's Premier Digital Solutions Company",
+    description: "Leading Vancouver software company specializing in web development, mobile apps, and AI integration. Expert team delivering innovative digital solutions.",
+    type: "website",
+    locale: "en_CA",
+    siteName: "Seawall Software"
+  }
 };
 
 export const viewport = {

@@ -20,10 +20,10 @@ const ContactPage = () => {
           transition={{ delay: 0.2 }}
         >
           <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4 text-center">
-            Ready to Start Your Project?
+            Start Your Digital Transformation with Seawall Software
           </h1>
           <p className="text-lg md:text-xl text-gray-700 text-center mb-8">
-            Whether you have a big idea or need help with an existing project, our team is here to help you succeed. Reach out and let&apos;s build something great together!
+            Transform your business with Seawall Software's cutting-edge digital solutions. Our Vancouver-based expert team specializes in web development, mobile apps, and AI integration. Let's collaborate to create innovative solutions that drive growth and success.
           </p>
           <a
             href="mailto:notify@seawallsoftware.ca"
@@ -57,7 +57,7 @@ const ContactPage = () => {
       {/* Why Choose Us Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-[#F3F3E0]/80 to-[#B9E5E8]/80 backdrop-blur-md mt-32">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-12 -mt-12">Why Choose Us?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-12 -mt-12">Why Choose Seawall Software?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
