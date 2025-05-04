@@ -83,7 +83,7 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Seawall Software - Vancouver's Digital Solutions Expert
+          Seawall Software - Vancouver&apos;s Digital Solutions Expert
         </motion.h1>
 
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 justify-between mx-auto p-4 md:p-8 lg:py-16 max-w-6xl w-full">
@@ -125,7 +125,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Seawall Software's Comprehensive Digital Solutions
+            Seawall Software&apos;s Comprehensive Digital Solutions
           </motion.h1>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16 mt-8'>
@@ -187,7 +187,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Seawall Software's Portfolio of Digital Solutions
+            Seawall Software&apos;s Portfolio of Digital Solutions
           </motion.h1>
 
           <motion.p

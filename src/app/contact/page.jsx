@@ -23,7 +23,7 @@ const ContactPage = () => {
             Start Your Digital Transformation with Seawall Software
           </h1>
           <p className="text-lg md:text-xl text-gray-700 text-center mb-8">
-            Transform your business with Seawall Software's cutting-edge digital solutions. Our Vancouver-based expert team specializes in web development, mobile apps, and AI integration. Let's collaborate to create innovative solutions that drive growth and success.
+            Transform your business with Seawall Software&apos;s cutting-edge digital solutions. Our Vancouver-based expert team specializes in web development, mobile apps, and AI integration. Let&apos;s collaborate to create innovative solutions that drive growth and success.
           </p>
           <a
             href="mailto:notify@seawallsoftware.ca"
