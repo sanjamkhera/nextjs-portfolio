@@ -63,8 +63,9 @@ const Footer = () => {
               © {new Date().getFullYear()} Seawall Software. All rights reserved.
             </p>
             <div className="flex gap-8 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="/legal/privacy-policy.html" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/legal/terms-of-service.html" className="hover:text-white transition-colors">Terms of Service</a>
+              <a href="/legal/support.html" className="hover:text-white transition-colors">Support</a>
             </div>
           </div>
         </div>
